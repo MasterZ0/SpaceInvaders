@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90918886c81b9aa46a635d985af45d53, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  InvaderBulletSpeed: 500
+  InvaderStartStepFrequency: 1
+  InvaderStepDifficultyMultiplier: 1.3
+  RocketChargeDuration: 10
+  RocketInicialSpeed: 300
+  RocketMoveSpeed: 500
+  RocketTimeToReadjustment: 2
+  CannonLifes: 3
+  CannonBulletSpeed: 500
+  CannonMoveSpeed: 500
+  MysteryMoveSpeed: 300
+  MysteryFrequencyAppearance: 15
+  PointsInvader1: 10
+  PointsInvader2: 20
+  PointsInvader3: 30
+  PointsMysteryShip: 300
+  BaseShelterCount: 4
+  BaseShelterSpacing: 170
+  BaseShelterCenterY: -150
+  InvadersStartCenterY: 80
+  InvadersSpacing: {x: 60, y: 40}
+  InvaderStep: {x: 10, y: 25}
+  LineOfInvaders1: 2
+  LineOfInvaders2: 2
+  LineOfInvaders3: 1
+  InvadersPerLine: 12

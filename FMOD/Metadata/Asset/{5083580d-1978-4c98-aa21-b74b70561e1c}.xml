@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodableAsset" id="{5083580d-1978-4c98-aa21-b74b70561e1c}">
+		<property name="assetPath">
+			<value>Megaman/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3937517f-610e-471a-8eec-c6dc82abe433}</destination>
+		</relationship>
+	</object>
+</objects>

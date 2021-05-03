@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{0687aee6-3893-470c-87b1-6095e413a006}">
+		<property name="assetPath">
+			<value>Megaman/enemy_shoot.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.14524999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3937517f-610e-471a-8eec-c6dc82abe433}</destination>
+		</relationship>
+	</object>
+</objects>

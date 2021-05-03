@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{8ee52c8e-a5f2-45ab-94f8-bc8d705505b6}">
+		<property name="assetPath">
+			<value>Megaman/teleport_in.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.20191666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3937517f-610e-471a-8eec-c6dc82abe433}</destination>
+		</relationship>
+	</object>
+</objects>

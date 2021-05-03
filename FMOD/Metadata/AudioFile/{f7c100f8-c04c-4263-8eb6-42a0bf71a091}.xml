@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{f7c100f8-c04c-4263-8eb6-42a0bf71a091}">
+		<property name="assetPath">
+			<value>Space/invaderkilled.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>11.0249996</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.30630385487528344</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3937517f-610e-471a-8eec-c6dc82abe433}</destination>
+		</relationship>
+	</object>
+</objects>

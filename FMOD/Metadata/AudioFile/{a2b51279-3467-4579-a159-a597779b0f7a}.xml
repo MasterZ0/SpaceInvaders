@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{a2b51279-3467-4579-a159-a597779b0f7a}">
+		<property name="assetPath">
+			<value>Megaman/unused.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.1533125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3937517f-610e-471a-8eec-c6dc82abe433}</destination>
+		</relationship>
+	</object>
+</objects>

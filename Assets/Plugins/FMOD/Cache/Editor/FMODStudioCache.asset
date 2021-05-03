@@ -15,10 +15,102 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637554636146584476
+  lastModified: 637555995668937916
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-6996929760550520067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/CannonExplosion
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/CannonExplosion
+  guid: 0f3afb9cd52b1d45880e99fe8273ba9f
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 1153
+--- !u!114 &-6698030425955740909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/Spaceship
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/Spaceship
+  guid: 3bb2a656267d524f958a685b64600d41
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 2340
+--- !u!114 &-6087896050842845803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/InvaderDie
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/InvaderDie
+  guid: 1cd71bc740edeb44ba5e210457528dbc
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 306
+--- !u!114 &-4678398108840956591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/SpaceshipDie
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/SpaceshipDie
+  guid: 93a00180cb7c264c82588178f96edc8a
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 163
 --- !u!114 &-4576703709042189755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,12 +126,126 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637554636146863738
+  lastModified: 637555995668968025
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 700
+    Value: 1250
   Exists: 1
+--- !u!114 &-3146762054454452976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/HitBarrer
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/HitBarrer
+  guid: 0960883483683d4e974b78b9444a986f
+  Banks: []
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 358
+--- !u!114 &-2181598997049256097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/InvaderShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/InvaderShoot
+  guid: 6d98528e9b418147b26012bb0f52b5e6
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 145
+--- !u!114 &-1006682581145676205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Steps/StepInvader 2
+  m_EditorClassIdentifier: 
+  Path: event:/Steps/StepInvader 2
+  guid: 74020cfacf7d974fa89d753bb0d84950
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 94
+--- !u!114 &-697063282279000244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Steps/StepInvader 3
+  m_EditorClassIdentifier: 
+  Path: event:/Steps/StepInvader 3
+  guid: 6c1c9db14a36364192febfc6c7cdda5e
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 95
+--- !u!114 &-576300249078743589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Steps/StepInvader 1
+  m_EditorClassIdentifier: 
+  Path: event:/Steps/StepInvader 1
+  guid: 8eda51cc4dca414c917c4da757df8afc
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 89
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,11 +261,137 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: -4576703709042189755}
   - {fileID: -7795063577342865403}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: -6996929760550520067}
+  - {fileID: -6698030425955740909}
+  - {fileID: 2709609597784445962}
+  - {fileID: -697063282279000244}
+  - {fileID: -1006682581145676205}
+  - {fileID: -4678398108840956591}
+  - {fileID: 2541126084709455906}
+  - {fileID: -576300249078743589}
+  - {fileID: -6087896050842845803}
+  - {fileID: -2181598997049256097}
+  - {fileID: 6938873080521481530}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7795063577342865403}
   StringsBanks:
   - {fileID: -4576703709042189755}
-  stringsBankWriteTime: 637554636146863738
+  stringsBankWriteTime: 637555995668968025
   cacheVersion: 6
+--- !u!114 &17585931100650024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/EnemyShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/EnemyShoot
+  guid: 6d98528e9b418147b26012bb0f52b5e6
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 145
+--- !u!114 &2541126084709455906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/CannonShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/CannonShoot
+  guid: 9ff776350071264b9c8ddf54bc967a65
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 370
+--- !u!114 &2709609597784445962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Steps/StepInvader 4
+  m_EditorClassIdentifier: 
+  Path: event:/Steps/StepInvader 4
+  guid: 4987e6e9b457be40b22c0847f4365918
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 99
+--- !u!114 &6849547967922073039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/EnemyDie
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/EnemyDie
+  guid: 1cd71bc740edeb44ba5e210457528dbc
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 306
+--- !u!114 &6938873080521481530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/HitBaseShelter
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/HitBaseShelter
+  guid: 0960883483683d4e974b78b9444a986f
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 358

@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SideWall
+  - Bullet
+  - Invader
+  - BaseShelter
+  - MysteryShip
+  - Enemy
+  - CannonArea
   layers:
   - Default
   - TransparentFX
@@ -11,14 +18,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerHitbox
+  - EnemyHitbox
+  - BaseShelter
+  - ArenaTrigger
+  - WallLimit
+  - MysteryShip
   - 
   - 
   - 
