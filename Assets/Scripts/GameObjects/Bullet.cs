@@ -7,13 +7,6 @@ public class Bullet : MonoBehaviour {
     public event Action OnReturn;   // It's called when the bullet became available
     private bool active;
 
-    private void Awake() {
-        GameController.OnChangeState += ctx => {
-            if (ctx == GameState.StartPlay)
-                Disable();
-        };
-    }
-
     private void OnTriggerEnter(Collider other) {
         Vector3 position = transform.position;
         if (Disable()) {

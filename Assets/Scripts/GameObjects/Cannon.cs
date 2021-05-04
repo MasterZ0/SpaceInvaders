@@ -1,36 +1,36 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour {
-
+public class Cannon : GameObserver {
     [SerializeField] private Bullet cannonBullet;
     [SerializeField] private Rocket rocket;
     [SerializeField] private Rigidbody rigidbod;
     [SerializeField] private Transform firePoint;
-    private GameSettings gameSettings;
 
+    private GameSettings gameSettings;
     private Vector3 startPosition;
 
     private bool canShoot = true;
     private bool rocketReady;
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
         startPosition = transform.position;
         gameSettings = GameManager.GameSettings;
-        gameObject.SetActive(false);
 
         cannonBullet.OnReturn += () => canShoot = true;
         HUD.OnRocketReady += () => rocketReady = true;
-        GameController.OnChangeState += OnChangeState;
     }
-    private void OnChangeState(GameState gameState) {
-        if(gameState == GameState.StartPlay) {  // Reset Game
-            rigidbod.velocity = Vector3.zero;
+
+    protected override void OnStartPlay() {
+        rigidbod.velocity = Vector3.zero;
+
+        if (!gameObject.activeSelf) {   // Reset
             transform.position = startPosition;
             gameObject.SetActive(true);
         }
-        else if (gameState == GameState.Playing) { // After Death
+    }
+
+    protected override void OnPlaying() {
+        if (!gameObject.activeSelf) {   // Death
             transform.position = startPosition;
             gameObject.SetActive(true);
         }

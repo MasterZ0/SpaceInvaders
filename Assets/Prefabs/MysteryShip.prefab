@@ -508,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9094782401539639344
 Transform:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 2839984558937552707}
   - component: {fileID: 5630075758544673497}
   - component: {fileID: 7786599417771437633}
-  m_Layer: 13
+  m_Layer: 7
   m_Name: MysteryShip
   m_TagString: MysteryShip
   m_Icon: {fileID: 0}
@@ -620,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbod: {fileID: 7786599417771437633}
+  sfx: {fileID: 3821429860288381092}
 --- !u!54 &7786599417771437633
 Rigidbody:
   m_ObjectHideFlags: 0

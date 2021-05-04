@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Invader : MonoBehaviour {
+public class Invader : GameObserver {
     [SerializeField] private Animator animator;
     [SerializeField] private InvaderType invaderType;
 
@@ -14,25 +11,32 @@ public class Invader : MonoBehaviour {
     private Vector3 startPosition;
     public static event Action<Invader> OnInvaderDie;
     public static event Action OnInvaderWallCollision;
-    private bool reseted = true;
+
+    private bool startPlay;
 
     public void Setup(Vector2Int gridPosition) {
         GridPosition = gridPosition;
         gameObject.SetActive(false);
         startPosition = transform.position;
 
-        GameController.OnChangeState += OnChangeState;
         InvadersController.OnStep += OnStep;
     }
 
-    private void OnChangeState(GameState state) {
-        if (state == GameState.StartPlay) {
-            transform.position = startPosition;
+    protected override void OnStartPlay() {
+        gameObject.SetActive(false);
+        transform.position = startPosition;
+        startPlay = true;
+    }
+
+    protected override void OnPlaying() {
+        if (startPlay) {
+            startPlay = false;
             gameObject.SetActive(true);
         }
-        else if (state == GameState.GameOver) {
-            gameObject.SetActive(false);
-        }
+    }
+
+    protected override void OnGameOver() {
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other) {

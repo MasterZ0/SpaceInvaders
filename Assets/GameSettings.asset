@@ -23,7 +23,7 @@ MonoBehaviour:
   CannonBulletSpeed: 500
   CannonMoveSpeed: 500
   MysteryMoveSpeed: 300
-  MysteryFrequencyAppearance: 15
+  MysteryFrequencyAppearance: 10
   PointsInvader1: 10
   PointsInvader2: 20
   PointsInvader3: 30

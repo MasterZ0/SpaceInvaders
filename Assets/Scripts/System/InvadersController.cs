@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvadersController : MonoBehaviour {
+public class InvadersController : GameObserver {
 
     [Header("Config")]
     [SerializeField] private StepAudio stepAudio;
     [SerializeField] private Bullet invaderBullet;
-    [SerializeField] private MysteryShip misteryShip;
 
     [Header("Prefabs")]
     [SerializeField] private Invader invader1;
@@ -24,92 +23,74 @@ public class InvadersController : MonoBehaviour {
     private GameSettings gameSettings;
 
     public float invadersSpeed;
-    private float time;
     private int direction = 1;
-    private bool playing;
+    private bool nextLevel;
     private bool waitingWallColision;
-    private bool mysteryShipActive;
 
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
         gameSettings = GameManager.GameSettings;
         SpawnInvaders();
 
-        GameController.OnChangeState += OnChangeState;
         Invader.OnInvaderDie += OnInvaderDie;
         Invader.OnInvaderWallCollision += OnWallCollision;
-        MysteryShip.OnMysteryShipReturn += OnMysteryShipReturn;
-
         invaderBullet.OnReturn += OnBulletReturn;
     }
-
-    private void FixedUpdate() {
-        if (playing && !mysteryShipActive) {
-            time -= Time.fixedDeltaTime;
-
-            if (time <= 0) {
-                mysteryShipActive = true;
-                misteryShip.Active();
-            }
-        }
-    }
-
-    private void OnChangeState(GameState gameState) {
-        if (gameState == GameState.Playing) {
-            time = gameSettings.MysteryFrequencyAppearance;
-            playing = true;
-            StartCoroutine(UpdateEnemy());
-            return;
-        }
-        else if (gameState == GameState.StartPlay) {
+    protected override void OnStartPlay() {
+        if (!nextLevel) {
             invadersSpeed = gameSettings.InvaderStartStepFrequency;
-            LoadList();
         }
-
-        // win, die, gameover
-        playing = false;
-        StopAllCoroutines();
-        if (gameState == GameState.Win) {
-            invadersSpeed *= gameSettings.InvaderStepDifficultyMultiplier;
-            LoadList();
-        }
+        LoadList();
+        StopAllCoroutines();    //Stop the first delay
     }
-    IEnumerator UpdateEnemy() {
-        OnBulletReturn();
-        while (invadersAlive.Count > 0) {
-            yield return new WaitForSeconds(invadersSpeed);
 
+    protected override void OnPlaying() {
+        StopAllCoroutines();
+        StartCoroutine(UpdateInvaders());
+    }
+
+    protected override void OnDie() {
+        StopAllCoroutines();
+    }
+
+    protected override void OnGameOver() {
+        nextLevel = false;
+    }
+
+    IEnumerator UpdateInvaders() {
+        yield return new WaitForSeconds(1.5f);
+        OnBulletReturn();
+
+        while (invadersAlive.Count > 0) {
             transform.position = new Vector3(transform.position.x + gameSettings.InvaderStep.x * direction, transform.position.y);
             OnStep.Invoke();
             stepAudio.Play();
+
+            yield return new WaitForSeconds(invadersSpeed); // Game tick
         }
     }
 
     #region Invaders and Bullet events
 
     private void OnBulletReturn() {
-        if (!playing)
+        if (CurrentState != GameState.Playing)
             return;
 
         int r = UnityEngine.Random.Range(0, belowInvaders.Count);
         invaderBullet.Shoot(belowInvaders[r].transform.position, gameSettings.InvaderBulletSpeed);
     }
 
-    private void OnMysteryShipReturn() {
-        mysteryShipActive = false;
-        time = gameSettings.MysteryFrequencyAppearance;
-    }
-
     private void OnWallCollision() {
-        if (waitingWallColision) {
+        if (waitingWallColision) {  // Delay
             return;
         }
         waitingWallColision = true;
         direction *= -1;
         transform.position = new Vector3(transform.position.x + gameSettings.InvaderStep.x * direction, transform.position.y - gameSettings.InvaderStep.y);
-        StartCoroutine(CollisionDelay());
+        StartCoroutine(WallCollisionDelay());
     }
 
-    private IEnumerator CollisionDelay() {
+    private IEnumerator WallCollisionDelay() {
         yield return new WaitForSeconds(.2f);
         waitingWallColision = false;
     }
@@ -137,7 +118,10 @@ public class InvadersController : MonoBehaviour {
         }
 
         if (belowInvaders.Count == 0) {
-            GameController.SetGameState(GameState.Win);
+            StopAllCoroutines();
+            nextLevel = true;
+            invadersSpeed *= gameSettings.InvaderStepDifficultyMultiplier;
+            GameController.PlayerWin();
         }
     }
 
@@ -186,21 +170,19 @@ public class InvadersController : MonoBehaviour {
 
     private void LoadList() {
         Vector2Int enemiesSize = gameSettings.GetEnemiesSize();
-
-        // Each List<Invader> represents a column
-        invadersAlive = new List<List<Invader>>();
+       
+        invadersAlive = new List<List<Invader>>();      // List of column
         for (int i = 0; i < enemiesSize.x; i++) {
             invadersAlive.Add(new List<Invader>());     // Add column
         }
 
         belowInvaders = new List<Invader>();
         foreach (Invader invader in allInvaders) {
-
             invadersAlive[invader.GridPosition.x].Add(invader);
-            if (invader.GridPosition.y == enemiesSize.y - 1) {
+
+            if (invader.GridPosition.y == enemiesSize.y - 1) {      // Last of a colum
                 belowInvaders.Add(invadersAlive[invader.GridPosition.x][enemiesSize.y - 1]);
             }
         }
     }
-
 }

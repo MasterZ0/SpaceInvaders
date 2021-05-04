@@ -3,58 +3,100 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MysteryShip : MonoBehaviour {
+public class MysteryShip : GameObserver {
     [SerializeField] private Rigidbody rigidbod;
+    [SerializeField] private GameObject sfx;
 
     public static event Action<InvaderType> OnMysteryShipDie;
-    public static event Action OnMysteryShipReturn;
+    private Vector3 Velocity { get => Vector3.right * direction * gameSettings.MysteryMoveSpeed; }
 
     private GameSettings gameSettings;
     private Vector3 startPosition;
-    
-    private bool active;
-    private void Awake() {
+    private Vector3 destination;
+
+    private float direction = 1;
+    private float timeToSpawn;
+    private bool flying;
+
+    protected override void Awake() {
+        base.Awake();
         gameSettings = GameManager.GameSettings;
 
-        startPosition = transform.position;
+        startPosition = transform.position; // Must be a negative value
+
         float enemiesSpacingY = gameSettings.InvadersSpacing.y;
         startPosition.y = (enemiesSpacingY / 2f) + (gameSettings.GetEnemiesSize().y / 2f) * enemiesSpacingY + gameSettings.InvadersStartCenterY;
-
-        gameObject.SetActive(false);
     }
 
-    public void Active() {
-        active = true;
-        gameObject.SetActive(true);
+    #region States
+    protected override void OnStartPlay() {
+        SetActive(false);
+        timeToSpawn = gameSettings.MysteryFrequencyAppearance;
+    }
 
-        Vector3 position = startPosition;
-        if (UnityEngine.Random.Range(0, 1f) < .5) {
+    protected override void OnPlaying() {
+        if (flying) {
+            rigidbod.velocity = Velocity;
+        }
+    }
+    protected override void OnDie() {
+        rigidbod.velocity = Vector3.zero;
+    }
 
-            position.x *= -1;
-            transform.position = position;
-            rigidbod.velocity = -Vector3.right * gameSettings.MysteryMoveSpeed;
+    protected override void OnGameOver() {
+        SetActive(false);
+    }
+
+    #endregion
+
+    private void SetActive(bool active) {
+        sfx.SetActive(active);
+        if (active) {
+            Move();
             return;
         }
 
-        transform.position = position;
-        rigidbod.velocity = Vector3.right * gameSettings.MysteryMoveSpeed;
+        flying = false;
+        transform.position = startPosition;
+        rigidbod.velocity = Vector3.zero;
+        timeToSpawn = gameSettings.MysteryFrequencyAppearance;
     }
 
-    private void OnBecameInvisible() {
-        if(active)
-            Desactive(false);
+    public void Move() {
+        if (UnityEngine.Random.Range(0, 1f) < .5) {
+            direction *= -1;
+        }
+
+        Vector3 position = startPosition;
+        position.x *= direction;
+        print(direction + " " + Velocity + " " + position);
+        // oposit X point
+        destination = new Vector3(-position.x, position.y);
+
+        transform.position = position;
+        rigidbod.velocity = Velocity;
+        flying = true;
+    }
+
+    private void FixedUpdate() {
+        if (CurrentState != GameState.Playing)
+            return;
+
+        if (!flying) {
+            timeToSpawn -= Time.fixedDeltaTime;
+
+            if (timeToSpawn <= 0) {
+                SetActive(true);
+            }
+        }
+        else if (Vector2.Distance(transform.position, destination) < 20f) {
+            SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(active)
-            Desactive(true);
-    }
-    public void Desactive(bool takeDamage) {
-        active = false;
-        gameObject.SetActive(false);
-        OnMysteryShipReturn.Invoke();
-
-        if (takeDamage) {
+        if(other.CompareTag(Constants.Tag.Bullet)) {
+            SetActive(false);
             OnMysteryShipDie.Invoke(InvaderType.MysteryShip);
         }
     }

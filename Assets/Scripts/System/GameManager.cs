@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : GameObserver {
+
+    #region Variables and Properties
+
     [SerializeField] private GameSettings gameSettings;
     [SerializeField] private GameController gameController;
     [SerializeField] private UI ui;
@@ -15,19 +18,18 @@ public class GameManager : MonoBehaviour {
     private bool iaPlaying = true;
     private bool mainMenuActive = true;
 
-    private void Awake() {
-        GameSettings = gameSettings;
+    #endregion
 
+    #region Start and Controls
+
+    protected override void Awake() {
+        base.Awake();
+        GameSettings = gameSettings;
         Options.Setup();
-        GameController.OnChangeState += OnChangeState;
 
         controls = new Controls();
         controls.UI.Submit.started += ctx => OnPressEnter();
         controls.Enable();
-    }
-
-    private void Start() {
-        gameController.ResetGame();
     }
 
     private void OnPressEnter() {
@@ -38,39 +40,34 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(.2f);
         ui.ShowMainMenu();
     }
+    #endregion
 
-    #region GameState Update
-    private void OnChangeState(GameState gameState) {
-
-        if (iaPlaying) {
-            if (!mainMenuActive) {
-                mainMenuActive = true;
-                ShowTitleScreen();
-            }
-
-            if (gameState == GameState.Playing) {
-                autoPlaying.enabled = true;
-            }
-            else if (gameState == GameState.Die) {
-                autoPlaying.enabled = false;
-            }
+    #region State Update
+    protected override void OnStartPlay() {
+        if (iaPlaying && !mainMenuActive) {
+            mainMenuActive = true;
+            controls.Enable();
+            ui.ShowTitleScreen();
         }
-        else if (gameState == GameState.Playing) {
+    }
+
+    protected override void OnPlaying() {
+        if(iaPlaying)
+            autoPlaying.enabled = true;
+        else
             ui.Playing();
-        }
-        else  if (gameState == GameState.GameOver) {   // Player OFF
-            GameOver();
-        }
     }
 
-    private void ShowTitleScreen() {    // Auto playing
-        controls.Enable();
-        ui.ShowTitleScreen();
+    protected override void OnDie() {
+        if (iaPlaying)
+            autoPlaying.enabled = false;
     }
-
-    private void GameOver() {
-        iaPlaying = true;
-        ui.GameOver();
+    protected override void OnGameOver() {
+        if (!iaPlaying) {
+            playerInputs.SetActiveControls(false);
+            iaPlaying = true;
+            ui.GameOver();
+        }
     }
     #endregion
 

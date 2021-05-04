@@ -1,30 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseShelter : MonoBehaviour {
+public class BaseShelter : GameObserver {
     [SerializeField] private Material[] durabilityMaterial;
+
     private MeshRenderer[] cubes;
     private int durability;
-    private bool gameOver;
 
-    private void Start() {
+    protected override void Awake() {
+        base.Awake();
         cubes = transform.GetComponentsInChildren<MeshRenderer>();
         durability = durabilityMaterial.Length;
-        GameController.OnChangeState += OnChangeState;
     }
 
-    private void OnChangeState(GameState gameState) {
-        if(gameState == GameState.GameOver) {
-            gameOver = true;
-            gameObject.SetActive(false);
-        }
-        else if (gameState == GameState.StartPlay && gameOver) {
-            gameOver = false;
-            durability = durabilityMaterial.Length;
-            SetColor();
-            gameObject.SetActive(true);
-        }
+    protected override void OnStartPlay() {
+        durability = durabilityMaterial.Length;
+        SetColor();
+        gameObject.SetActive(true);
+    }
+
+    protected override void OnGameOver() {
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other) {

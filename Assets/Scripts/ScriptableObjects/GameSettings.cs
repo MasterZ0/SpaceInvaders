@@ -52,5 +52,4 @@ public class GameSettings : ScriptableObject {
     public Vector2Int GetEnemiesSize() {
         return new Vector2Int(InvadersPerLine, LineOfInvaders1 + LineOfInvaders2 + LineOfInvaders3);
     }
-
 }

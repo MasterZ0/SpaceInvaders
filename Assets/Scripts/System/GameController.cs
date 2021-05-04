@@ -8,10 +8,15 @@ public class GameController : MonoBehaviour {
     #region Variables and Properties
     [SerializeField] private GameObject baseShelter;
 
+    public static GameState CurrentState { get; private set; }
+    public static event Action StartPlay;
+    public static event Action Playing;
+    public static event Action Die;
+    public static event Action GameOver;
+    private static GameController Instance;
+
     private GameSettings gameSettings;
     private int lifes;
-    public static event Action<GameState> OnChangeState;
-    private static GameController Instance;
 
     #endregion
 
@@ -26,6 +31,7 @@ public class GameController : MonoBehaviour {
         gameSettings = GameManager.GameSettings;
         SpawBaseShelter();
     }
+
     private void SpawBaseShelter() {
         Vector3 position = new Vector3(0, gameSettings.BaseShelterCenterY);
         position.x -= (gameSettings.BaseShelterSpacing / 2f) + (gameSettings.BaseShelterCount / 2f - 1) * gameSettings.BaseShelterSpacing;  // HalfSpacing + (count - 1) * Spacing
@@ -35,13 +41,18 @@ public class GameController : MonoBehaviour {
             position.x += gameSettings.BaseShelterSpacing;
         }
     }
+
+    private void Start() => Invoke(nameof(ResetGame), .5f);
     #endregion
 
     #region Public
     public static void SetGameState(GameState state) {
         Instance.ChangeState(state);
     }
-    public void ResetGame() {
+
+    public static void PlayerWin() => Instance.ResetGame();
+
+    public void ResetGame() {   // Loop: Game Over -> StartPlay -> Playing
         ChangeState(GameState.StartPlay);
         StartCoroutine(ResetingGame());
     }
@@ -54,16 +65,25 @@ public class GameController : MonoBehaviour {
 
     #region OnChangeState
     private void ChangeState(GameState state) {
+        CurrentState = state;
         switch (state) {
             case GameState.StartPlay:
                 lifes = gameSettings.CannonLifes;
+                StartPlay.Invoke();
+                break;
+            case GameState.Playing:
+                Playing.Invoke();
                 break;
             case GameState.Die:
+                Die.Invoke();
                 StartCoroutine(PlayerDie());
                 break;
+            case GameState.GameOver:
+                GameOver.Invoke();
+                break;
+            default:
+                throw new NotImplementedException();
         }
-
-        OnChangeState.Invoke(state);
     }
 
     private IEnumerator PlayerDie() {
