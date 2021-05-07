@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectManager : MonoBehaviour {
-    [SerializeField] private ExplosionFX invaderExplosion;
-    [SerializeField] private ExplosionFX baseShelterExplosion;
+    [Header("GameObject")]
     [SerializeField] private ExplosionFX cannonExplosion;
     [SerializeField] private ExplosionFX mysteryShipExplosion;
 
-    private ExplosionFX cannonExplosionInst;
-    private ExplosionFX mysteryShipExplosionInst;
+    [Header("Prefab")]
+    [SerializeField] private ExplosionFX invaderExplosion;
+    [SerializeField] private ExplosionFX baseShelterExplosion;
+
     private Queue<ExplosionFX> invaderExplosions;
     private Queue<ExplosionFX> baseShelterExplosions;
 
@@ -23,12 +24,6 @@ public class EffectManager : MonoBehaviour {
         Instance = this;
         ExplosionFX.OnDisableFX += OnEffectIsAvailable;
 
-        // Setting pool cache
-        cannonExplosionInst = Instantiate(cannonExplosion, transform);
-        cannonExplosionInst.gameObject.SetActive(false);
-        mysteryShipExplosionInst = Instantiate(mysteryShipExplosion, transform);
-        mysteryShipExplosionInst.gameObject.SetActive(false);
-
         invaderExplosions = new Queue<ExplosionFX>();
         baseShelterExplosions = new Queue<ExplosionFX>();
         for (int i = 0; i < 3; i++) {
@@ -37,19 +32,19 @@ public class EffectManager : MonoBehaviour {
         }
     }
 
-    public static void SpawnExplosion(Vector3 position, string tag) {
+    public static void SpawnExplosion(Vector3 position, string type) {
 
-        if (tag == Constants.Tag.Invader) {
+        if (type == Constants.Tag.Invader) {
             Instance.SpawnInvaderExplosion(position);
         }
-        else if (tag == Constants.Tag.BaseShelter) {
+        else if (type == Constants.Tag.BaseShelter) {
             Instance.SpawnBaseShelterExplosion(position);
         }
-        else if(tag == Constants.Tag.Player) {
-            Instance.SpawnCannonExplosion(position);
+        else if(type == Constants.Tag.Player) {
+            Instance.cannonExplosion.SpawnFX(position);
         }
-        else if (tag == Constants.Tag.MysteryShip) {
-            Instance.SpawnMisteryShipExplosion(position);
+        else if (type == Constants.Tag.MysteryShip) {
+            Instance.mysteryShipExplosion.SpawnFX(position);
         }
         else { 
             Debug.LogError("Invalid tag");
@@ -62,31 +57,20 @@ public class EffectManager : MonoBehaviour {
             InstantiateFX(invaderExplosion, ref invaderExplosions);
         }
         ExplosionFX newInstance = invaderExplosions.Dequeue();
-        newInstance.transform.position = position;
-        newInstance.gameObject.SetActive(true);
+        newInstance.SpawnFX(position);
     }
     private void SpawnBaseShelterExplosion(Vector3 position) {
         if (baseShelterExplosions.Count == 0) {
             InstantiateFX(baseShelterExplosion, ref baseShelterExplosions);
         }
         ExplosionFX newInstance = baseShelterExplosions.Dequeue();
-        newInstance.transform.position = position;
-        newInstance.gameObject.SetActive(true);
-    }
-    private void SpawnCannonExplosion(Vector3 position) {
-        cannonExplosionInst.gameObject.SetActive(true);
-        cannonExplosionInst.transform.position = position;
-    }
-    private void SpawnMisteryShipExplosion(Vector3 position) {
-        mysteryShipExplosionInst.gameObject.SetActive(true);
-        mysteryShipExplosionInst.transform.position = position;
+        newInstance.SpawnFX(position);
     }
 
     #endregion
 
     private void InstantiateFX(ExplosionFX explosionFX, ref Queue<ExplosionFX> queue) {
         explosionFX = Instantiate(explosionFX, transform);
-        explosionFX.gameObject.SetActive(false);
         queue.Enqueue(explosionFX);
     }
     private void OnEffectIsAvailable(ExplosionFX explosionFX) {

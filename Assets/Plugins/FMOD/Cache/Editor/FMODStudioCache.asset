@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8126779336484150652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/RocketLaunch
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/RocketLaunch
+  guid: eccd01ee0b585f43b16e8346ab96b723
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 415
 --- !u!114 &-7795063577342865403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +38,7 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637555995668937916
+  lastModified: 637559478087777183
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -60,11 +83,11 @@ MonoBehaviour:
   - {fileID: -7795063577342865403}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 1000
-  Length: 2340
+  Length: 1380
 --- !u!114 &-6087896050842845803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,12 +149,35 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637555995668968025
+  lastModified: 637559478087817076
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1250
+    Value: 1380
   Exists: 1
+--- !u!114 &-4154541718344475291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/RocketImpact
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/RocketImpact
+  guid: 67e90edcb1ad9a429941d9099aaabbdc
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 484
 --- !u!114 &-3146762054454452976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +223,46 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 1000
   Length: 145
+--- !u!114 &-1533317619687710376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Spaceship/Playing
+  m_EditorClassIdentifier: 
+  Name: Playing
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &-1208534088130985740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Spaceship/Playing
+  m_EditorClassIdentifier: 
+  Name: Playing
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-1006682581145676205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,12 +359,15 @@ MonoBehaviour:
   - {fileID: -6087896050842845803}
   - {fileID: -2181598997049256097}
   - {fileID: 6938873080521481530}
+  - {fileID: -4154541718344475291}
+  - {fileID: 6678268562203192871}
+  - {fileID: -8126779336484150652}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7795063577342865403}
   StringsBanks:
   - {fileID: -4576703709042189755}
-  stringsBankWriteTime: 637555995668968025
+  stringsBankWriteTime: 637559478087817076
   cacheVersion: 6
 --- !u!114 &17585931100650024
 MonoBehaviour:
@@ -349,6 +438,49 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 99
+--- !u!114 &4850455209169367725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Spaceship/Exit
+  m_EditorClassIdentifier: 
+  Name: Exit
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
+--- !u!114 &6678268562203192871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/RocketFlying
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/RocketFlying
+  guid: 6fe9f69aaf386d488ddad3178e3bcd17
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 115
 --- !u!114 &6849547967922073039
 MonoBehaviour:
   m_ObjectHideFlags: 0

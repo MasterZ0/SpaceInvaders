@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
@@ -23,15 +24,20 @@ public class Bullet : MonoBehaviour {
             return false;
 
         active = false;
+
+        Invoke(nameof(DelayToReturn), .2f);
         gameObject.SetActive(false);
-        OnReturn.Invoke();
         return true;
     }
+    private void DelayToReturn() {
+        OnReturn.Invoke();
+    }
+
 
     public void Shoot(Vector3 position, float speed) {
+        active = true;
         transform.position = position;
         gameObject.SetActive(true);
         rigidbod.velocity = transform.up * speed;
-        active = true;
     }
 }

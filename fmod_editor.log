@@ -9,7 +9,7 @@
 [LOG] DownMix::init                            : done.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000225D6296F98 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000023447B13E28 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -23,6 +23,36 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SoundI::release                          :  (0000023409866498)
+[LOG] SoundI::release                          :     enemy_hit (0000023390563C08)
+[LOG] SoundI::release                          :  (0000023409866778)
+[LOG] SoundI::release                          :     unused_2 (0000023390563588)
+[LOG] SoundI::release                          :  (0000023409866A58)
+[LOG] SoundI::release                          :     ufo_lowpitch (0000023390563A68)
+[LOG] SoundI::release                          :  (0000023409866EA8)
+[LOG] SoundI::release                          :     water_splash (0000023390563728)
+[LOG] SoundI::release                          :  (0000023409867018)
+[LOG] SoundI::release                          :     hit (00000233905638C8)
+[LOG] SoundI::release                          :  (0000023422350088)
+[LOG] SoundI::release                          :     fastinvader2 (00000233959FCDE8)
+[LOG] SoundI::release                          :  (00000234712230F8)
+[LOG] SoundI::release                          :     fastinvader3 (00000233959FBA68)
+[LOG] SoundI::release                          :  (0000023422350D78)
+[LOG] SoundI::release                          :     fastinvader1 (00000233959FBC08)
+[LOG] SoundI::release                          :  (0000023471222578)
+[LOG] SoundI::release                          :     fastinvader4 (00000233959FEE68)
+[LOG] SoundI::release                          :  (0000023409866608)
+[LOG] SoundI::release                          :     enemy_shoot (0000023390563248)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 

@@ -6,8 +6,13 @@ public class ExplosionFX : MonoBehaviour {
     public ExplosionType Type { get => type; }
     public static event Action<ExplosionFX> OnDisableFX;
 
+    public void SpawnFX(Vector3 position) {
+        transform.position = position;
+        gameObject.SetActive(true);
+    }
+
     public void OnParticleSystemStopped() {
         gameObject.SetActive(false);
-        OnDisableFX.Invoke(this);
+        OnDisableFX?.Invoke(this);
     }
 }

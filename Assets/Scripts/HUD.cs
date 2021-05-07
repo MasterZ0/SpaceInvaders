@@ -9,18 +9,24 @@ public class HUD : GameObserver {
     [SerializeField] private TextMeshProUGUI hiScoreText;
     [SerializeField] private Slider rocketSlider;
 
-    public static event Action OnRocketReady;
     private GameSettings gameSettings;
 
-    private float rocketTransition;
     private int currentScore;
     private int hiScore;
     private int lifes;
-    private bool rocketReady;
     private bool reset = true;
+    private static HUD Instance;
 
     protected override void Awake() {
         base.Awake();
+
+        if (Instance != null) {
+            Debug.LogError("There is already an instance of GameController");
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         gameSettings = GameManager.GameSettings;
 
         Invader.OnInvaderDie += ctx => AddPoint(ctx.InvaderType);
@@ -32,7 +38,6 @@ public class HUD : GameObserver {
 
     protected override void OnStartPlay() {
         if (reset) {
-            rocketTransition = 0;
             lifes = gameSettings.CannonLifes;
             UpdateLifes();
             currentScore = 0;
@@ -47,9 +52,6 @@ public class HUD : GameObserver {
 
     protected override void OnGameOver() {
         reset = true;
-        rocketReady = false;
-        rocketTransition = 0;
-        rocketSlider.value = rocketTransition;
 
         if (currentScore > hiScore) {
             hiScore = currentScore;
@@ -57,17 +59,6 @@ public class HUD : GameObserver {
         }
     }
 
-    private void Update() {
-        if(!rocketReady && CurrentState == GameState.Playing) {
-            rocketTransition += Time.deltaTime / gameSettings.RocketChargeDuration;
-            rocketSlider.value = rocketTransition;
-
-            if (rocketTransition >= 1) {
-                rocketReady = true;
-                OnRocketReady.Invoke();
-            }
-        }
-    }
 
     private void UpdateLifes() {
         for (int i = 0; i < lifesImg.Length; i++) {
@@ -88,6 +79,10 @@ public class HUD : GameObserver {
         if (currentScore > hiScore) {
             hiScoreText.text = hiScore.ToString();
         }
+    }
+
+    public static void UpdateRocket(float value) {
+        Instance.rocketSlider.value = value;
     }
 
 }

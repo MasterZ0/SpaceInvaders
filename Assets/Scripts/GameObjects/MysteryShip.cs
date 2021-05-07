@@ -69,8 +69,6 @@ public class MysteryShip : GameObserver {
 
         Vector3 position = startPosition;
         position.x *= direction;
-        print(direction + " " + Velocity + " " + position);
-        // oposit X point
         destination = new Vector3(-position.x, position.y);
 
         transform.position = position;

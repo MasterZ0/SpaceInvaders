@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Cannon : GameObserver {
@@ -11,13 +12,20 @@ public class Cannon : GameObserver {
 
     private bool canShoot = true;
     private bool rocketReady;
+
+
     protected override void Awake() {
         base.Awake();
         startPosition = transform.position;
         gameSettings = GameManager.GameSettings;
 
         cannonBullet.OnReturn += () => canShoot = true;
-        HUD.OnRocketReady += () => rocketReady = true;
+        rocket.OnReady += () => rocketReady = true;
+    }
+
+
+    private void Update() {
+        
     }
 
     protected override void OnStartPlay() {
@@ -52,6 +60,7 @@ public class Cannon : GameObserver {
         rocketReady = false;
         rocket.Shoot(firePoint.position);
     }
+
 
     public void OnTriggerEnter(Collider other) {
         GameController.SetGameState(GameState.Die);

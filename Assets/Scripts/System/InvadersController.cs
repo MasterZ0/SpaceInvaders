@@ -120,7 +120,7 @@ public class InvadersController : GameObserver {
         if (belowInvaders.Count == 0) {
             StopAllCoroutines();
             nextLevel = true;
-            invadersSpeed *= gameSettings.InvaderStepDifficultyMultiplier;
+            invadersSpeed -= gameSettings.InvaderStepFrequencyReducer;
             GameController.PlayerWin();
         }
     }
