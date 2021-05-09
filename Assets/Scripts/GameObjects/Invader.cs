@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Invader : GameObserver {
+public class Invader : GameObserver, IDamageble {
     [SerializeField] private Animator animator;
     [SerializeField] private InvaderType invaderType;
+    [SerializeField] private ExplosionFX deathFx;
 
     public Vector2Int GridPosition { get; private set; }
     public InvaderType InvaderType { get => invaderType; }
@@ -39,23 +40,25 @@ public class Invader : GameObserver {
         gameObject.SetActive(false);
     }
 
+    public void OnStep() {
+        animator.SetTrigger(Constants.Animator.Step);
+    }
+
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag(Constants.Tag.SideWall)) {
             OnInvaderWallCollision.Invoke();
         }
-        else if (other.CompareTag(Constants.Tag.Bullet)){
-            OnInvaderDie.Invoke(this);
-            gameObject.SetActive(false);
-        }
         else if (other.CompareTag(Constants.Tag.CannonArea)) {
             GameController.SetGameState(GameState.GameOver);
         }
-        else {
-            Debug.LogError("Unexpected collision");
+        else if (!other.CompareTag(Constants.Tag.PlayerHitbox)) { 
+            Debug.LogError($"Unexpected collision. Tag: {other.tag}, Name: {other.name}");
         }
     }
 
-    public void OnStep() {
-        animator.SetTrigger(Constants.Animator.Step);
+    public void TakeDamage() {
+        deathFx.SpawnObject(transform.position, Quaternion.identity);
+        OnInvaderDie.Invoke(this);
+        gameObject.SetActive(false);
     }
 }

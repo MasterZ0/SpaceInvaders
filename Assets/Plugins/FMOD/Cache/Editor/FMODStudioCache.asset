@@ -23,6 +23,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 1000
   Length: 415
+--- !u!114 &-8126074192739991500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/AreaAttack
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/AreaAttack
+  guid: 3cb2fa5142941e4b844f6dcf15ff424a
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 700
 --- !u!114 &-7795063577342865403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,10 +61,33 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637559478087777183
+  lastModified: 637561729099263929
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-7455968279611627222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/SmallCannonShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/SmallCannonShoot
+  guid: ad02614f01a630408d1b7609d37928e0
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 239
 --- !u!114 &-6996929760550520067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,11 +195,11 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637559478087817076
+  lastModified: 637561729099303770
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1380
+    Value: 1584
   Exists: 1
 --- !u!114 &-4154541718344475291
 MonoBehaviour:
@@ -178,6 +224,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 1000
   Length: 484
+--- !u!114 &-3353863785801186887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/HitShield
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/HitShield
+  guid: a21736949ddc18459ea8348a66c72b44
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 225
 --- !u!114 &-3146762054454452976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,12 +431,16 @@ MonoBehaviour:
   - {fileID: -4154541718344475291}
   - {fileID: 6678268562203192871}
   - {fileID: -8126779336484150652}
+  - {fileID: 6340771004066509314}
+  - {fileID: -3353863785801186887}
+  - {fileID: -7455968279611627222}
+  - {fileID: -8126074192739991500}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7795063577342865403}
   StringsBanks:
   - {fileID: -4576703709042189755}
-  stringsBankWriteTime: 637559478087817076
+  stringsBankWriteTime: 637561729099303770
   cacheVersion: 6
 --- !u!114 &17585931100650024
 MonoBehaviour:
@@ -458,6 +531,29 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &6340771004066509314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SoundEffects/HugeCannonShoot
+  m_EditorClassIdentifier: 
+  Path: event:/SoundEffects/HugeCannonShoot
+  guid: 3b5df9d9fcf4584ab361bf54150133de
+  Banks:
+  - {fileID: -7795063577342865403}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 576
 --- !u!114 &6678268562203192871
 MonoBehaviour:
   m_ObjectHideFlags: 0

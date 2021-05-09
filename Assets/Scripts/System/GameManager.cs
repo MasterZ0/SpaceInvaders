@@ -7,7 +7,6 @@ public class GameManager : GameObserver {
     #region Variables and Properties
 
     [SerializeField] private GameSettings gameSettings;
-    [SerializeField] private GameController gameController;
     [SerializeField] private UI ui;
     [SerializeField] private PlayerInputs playerInputs;
     [SerializeField] private AutoPlaying autoPlaying;
@@ -78,7 +77,7 @@ public class GameManager : GameObserver {
         autoPlaying.enabled = false;
         playerInputs.SetActiveControls(true);
 
-        gameController.ResetGame();
+        GameController.NewGame();
         ui.PrepareToPlay();
     }
     public void OnQuit() {

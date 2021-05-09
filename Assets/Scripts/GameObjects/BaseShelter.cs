@@ -1,19 +1,21 @@
 using UnityEngine;
 
-public class BaseShelter : GameObserver {
-    [SerializeField] private Material[] durabilityMaterial;
-
+public class BaseShelter : GameObserver, IDamageble {
+    [SerializeField] private ExplosionFX hitEffect;
     private MeshRenderer[] cubes;
+    private Color[] durabilitiesColor;
     private int durability;
 
     protected override void Awake() {
         base.Awake();
         cubes = transform.GetComponentsInChildren<MeshRenderer>();
-        durability = durabilityMaterial.Length;
+        durabilitiesColor = GameManager.GameSettings.BaseShelterDurability;
+        durability = durabilitiesColor.Length;
+        SetColor();
     }
 
     protected override void OnStartPlay() {
-        durability = durabilityMaterial.Length;
+        durability = durabilitiesColor.Length;
         SetColor();
         gameObject.SetActive(true);
     }
@@ -22,18 +24,19 @@ public class BaseShelter : GameObserver {
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void SetColor() {
+        foreach (MeshRenderer c in cubes) {
+            c.material.color = durabilitiesColor[durability - 1];
+        }
+    }
+
+    public void TakeDamage() {
+        hitEffect.SpawnObject(transform.position, Quaternion.identity);
         durability--;
-        if(durability <= 0) {
+        if (durability <= 0) {
             gameObject.SetActive(false);
             return;
         }
         SetColor();
-    }
-
-    private void SetColor() {
-        foreach (MeshRenderer c in cubes) {
-            c.material = durabilityMaterial[durability - 1];
-        }
     }
 }

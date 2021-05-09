@@ -10,6 +10,7 @@ public class InvadersController : GameObserver {
     [SerializeField] private Bullet invaderBullet;
 
     [Header("Prefabs")]
+    [SerializeField] private Item item;
     [SerializeField] private Invader invader1;
     [SerializeField] private Invader invader2;
     [SerializeField] private Invader invader3;
@@ -22,7 +23,7 @@ public class InvadersController : GameObserver {
 
     private GameSettings gameSettings;
 
-    public float invadersSpeed;
+    private float invadersSpeed;
     private int direction = 1;
     private bool nextLevel;
     private bool waitingWallColision;
@@ -77,7 +78,7 @@ public class InvadersController : GameObserver {
             return;
 
         int r = UnityEngine.Random.Range(0, belowInvaders.Count);
-        invaderBullet.Shoot(belowInvaders[r].transform.position, gameSettings.InvaderBulletSpeed);
+        invaderBullet.Shoot(belowInvaders[r].transform.position);
     }
 
     private void OnWallCollision() {
@@ -122,6 +123,12 @@ public class InvadersController : GameObserver {
             nextLevel = true;
             invadersSpeed -= gameSettings.InvaderStepFrequencyReducer;
             GameController.PlayerWin();
+        }
+
+        // Drop item?
+        float random = UnityEngine.Random.Range(0f, 1f);
+        if (random <= gameSettings.ItemInvaderDropChange) {
+            item.SpawnObject(deadInvader.transform.position, deadInvader.transform.rotation);
         }
     }
 

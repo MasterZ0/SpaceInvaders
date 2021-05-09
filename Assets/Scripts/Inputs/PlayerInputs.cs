@@ -17,6 +17,7 @@ public class PlayerInputs : MonoBehaviour {
 
     public void SetActiveControls(bool active) {
         if (active) {
+            cannon.ResetCannon();
             controls.Enable();
         }
         else {

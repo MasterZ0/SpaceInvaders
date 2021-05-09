@@ -18,3 +18,18 @@ public enum ExplosionType {
     Cannon,
     MysteryShip
 }
+
+public enum EquipmentType {
+    Basic,
+    Shield,
+    RapidFire,
+    ExplosiveBullet,
+    Ultimate
+}
+
+public enum BulletType {
+    Cannon,
+    RapidFire,
+    ExplosiveBullet,
+    Invader
+}

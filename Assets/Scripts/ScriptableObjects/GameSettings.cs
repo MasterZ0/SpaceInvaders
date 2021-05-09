@@ -5,6 +5,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewGameSettings", menuName = "ScriptableObjects/GameSettings", order = 0)]
 public class GameSettings : ScriptableObject {
 
+
+    [Header("Equiment")]
+    public float EquipmentDuration;
+    public float EquipmentItemSpeed;
+    public Color[] EquipmentShieldDurability;
+
+    [Header("Item")]
+    [Range(0,1)]
+    public float ItemInvaderDropChange;
+    [Range(0,1)]
+    public float ItemMysteryShipDropChange;
+    [Range(0,1)]
+    public float ItemShieldChance;
+    [Range(0,1)]
+    public float ItemRapidFireChance;
+    [Range(0,1)]
+    public float ItemExplosiveWeaponChance;
+    [Range(0,1)]
+    public float ItemUltimateChance;
+
+
     [Header("Cannon")]
     [Range(1, 5)]
     public int CannonLifes;
@@ -48,7 +69,8 @@ public class GameSettings : ScriptableObject {
     public int LineOfInvaders3 = 1;
     public int InvadersPerLine = 12;
 
-    [Header("Base Shelter Alignment")]
+    [Header("Base Shelter")]
+    public Color[] BaseShelterDurability;
     public int BaseShelterCount = 4;
     public float BaseShelterSpacing = 150f;
     public float BaseShelterCenterY = -150f;

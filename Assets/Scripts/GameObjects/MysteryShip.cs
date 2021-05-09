@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MysteryShip : GameObserver {
+public class MysteryShip : GameObserver, IDamageble {
+    [SerializeField] private ExplosionFX deathFx;
     [SerializeField] private Rigidbody rigidbod;
     [SerializeField] private GameObject sfx;
+    [SerializeField] private Item item;
 
     public static event Action<InvaderType> OnMysteryShipDie;
     private Vector3 Velocity { get => Vector3.right * direction * gameSettings.MysteryMoveSpeed; }
@@ -92,10 +94,15 @@ public class MysteryShip : GameObserver {
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag(Constants.Tag.Bullet)) {
-            SetActive(false);
-            OnMysteryShipDie.Invoke(InvaderType.MysteryShip);
+    public void TakeDamage() {
+        deathFx.SpawnObject(transform.position, Quaternion.identity);
+        OnMysteryShipDie.Invoke(InvaderType.MysteryShip);
+
+        float random = UnityEngine.Random.Range(0f, 1f);
+        if (random <= gameSettings.ItemMysteryShipDropChange) {
+            item.SpawnObject(transform.position, transform.rotation);
         }
+
+        SetActive(false);
     }
 }

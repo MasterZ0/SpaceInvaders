@@ -1,31 +1,41 @@
 using System;
 using UnityEngine;
 
-public class Cannon : GameObserver {
-    [SerializeField] private Bullet cannonBullet;
+public class Cannon : GameObserver, ICollector, IDamageble {
     [SerializeField] private Rocket rocket;
     [SerializeField] private Rigidbody rigidbod;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform rocketPoint;
+    [SerializeField] private ExplosionFX deathFX;
 
     private GameSettings gameSettings;
     private Vector3 startPosition;
 
-    private bool canShoot = true;
     private bool rocketReady;
-
+    private Equipment equipment;
 
     protected override void Awake() {
         base.Awake();
         startPosition = transform.position;
         gameSettings = GameManager.GameSettings;
 
-        cannonBullet.OnReturn += () => canShoot = true;
         rocket.OnReady += () => rocketReady = true;
     }
 
+    private void Start() {
+        equipment = EquipmentFactory.Create(gameObject, EquipmentType.Basic);
+        HUD.SetEquipment(EquipmentType.Basic);
+    }
 
     private void Update() {
-        
+        bool finish = equipment.UpdateTimer();
+        if (finish) {
+            ChangeEquipment(EquipmentType.Basic);
+        }
+    }
+    public void ResetCannon() {
+        transform.position = startPosition;
+        ChangeEquipment(EquipmentType.Basic);
+        gameObject.SetActive(true);
     }
 
     protected override void OnStartPlay() {
@@ -48,22 +58,41 @@ public class Cannon : GameObserver {
 
     }
     public void OnShoot() {
-        if (canShoot) {
-            canShoot = false;
-            cannonBullet.Shoot(firePoint.position, gameSettings.CannonBulletSpeed);
-        }
+        equipment.Shoot();
     }
     public void OnRocket() {
         if (!rocketReady)
             return;
 
         rocketReady = false;
-        rocket.Shoot(firePoint.position);
+        rocket.Shoot(rocketPoint.position);
     }
 
+    #region Trigger
 
-    public void OnTriggerEnter(Collider other) {
+    public void TakeDamage() {  // Bullet Trigger
         GameController.SetGameState(GameState.Die);
         gameObject.SetActive(false);
+        deathFX.SpawnObject(transform.position, Quaternion.identity);
+
+        ChangeEquipment(EquipmentType.Basic);
     }
+
+    public void SetPowerItem(EquipmentType newEquipment) { // Item Trigger
+
+        if(newEquipment == equipment.EquipmentType) {
+            equipment.ResetDuration();
+            return;
+        }
+
+        ChangeEquipment(newEquipment);
+    }
+
+    #endregion
+    private void ChangeEquipment(EquipmentType newEquipment) {
+        equipment.Dispose();
+        equipment = EquipmentFactory.Create(gameObject, newEquipment);
+        HUD.SetEquipment(newEquipment);
+    }
+
 }

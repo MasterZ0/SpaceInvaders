@@ -141,7 +141,8 @@ public class Rocket : GameObserver {
         if (!flying)
             return;
 
-        impactFx.SpawnFX(transform.position);
+        other.GetComponent<IDamageble>().TakeDamage();
+        impactFx.SpawnObject(transform.position, Quaternion.identity);
         ResetRocket();
     }
     private void ResetRocket() {

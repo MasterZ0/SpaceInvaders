@@ -5066,7 +5066,7 @@ GameObject:
   - component: {fileID: 8513339863552127312}
   m_Layer: 8
   m_Name: Rocket
-  m_TagString: Bullet
+  m_TagString: PlayerHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5140,12 +5140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4486d7386d665d14a948f3113f9b0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aim: {fileID: 0}
+  impactFx: {fileID: 0}
   radius: 1110
+  rigidbod: {fileID: 4339038366492492132}
   invadersMask:
     serializedVersion: 2
     m_Bits: 8320
-  rigidbod: {fileID: 4339038366492492132}
-  aim: {fileID: 0}
   launchSfx:
     m_PersistentCalls:
       m_Calls:
@@ -5176,7 +5177,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  impactFx: {fileID: 0}
 --- !u!1 &2702687205292834065
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,8 +28,11 @@ public class GameController : MonoBehaviour {
             return;
         }
         Instance = this;
+
         gameSettings = GameManager.GameSettings;
+        lifes = gameSettings.CannonLifes;
         SpawBaseShelter();
+        StartCoroutine(DelayToInit());
     }
 
     private void SpawBaseShelter() {
@@ -42,7 +45,11 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void Start() => Invoke(nameof(ResetGame), .5f);
+    IEnumerator DelayToInit() {
+        yield return new WaitForSeconds(1f);
+        ResetGame(false);
+    }
+
     #endregion
 
     #region Public
@@ -50,9 +57,15 @@ public class GameController : MonoBehaviour {
         Instance.ChangeState(state);
     }
 
-    public static void PlayerWin() => Instance.ResetGame();
+    public static void PlayerWin() => Instance.ResetGame(false);
+    public static void NewGame() => Instance.ResetGame(true);
+    private void ResetGame(bool newGame) {   // Loop: Game Over -> StartPlay -> Playing
 
-    public void ResetGame() {   // Loop: Game Over -> StartPlay -> Playing
+        if (newGame) {
+            lifes = Instance.gameSettings.CannonLifes;
+            HUD.ResetHUD();
+        }
+
         ChangeState(GameState.StartPlay);
         StartCoroutine(ResetingGame());
     }
@@ -68,7 +81,6 @@ public class GameController : MonoBehaviour {
         CurrentState = state;
         switch (state) {
             case GameState.StartPlay:
-                lifes = gameSettings.CannonLifes;
                 StartPlay.Invoke();
                 break;
             case GameState.Playing:
@@ -93,7 +105,8 @@ public class GameController : MonoBehaviour {
         if (--lifes <= 0) {
             ChangeState(GameState.GameOver);
             yield return new WaitForSeconds(3);
-            ResetGame();
+
+            ResetGame(true);
             yield break;
         }
         ChangeState(GameState.Playing);

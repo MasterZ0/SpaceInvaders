@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90918886c81b9aa46a635d985af45d53, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  EquipmentDuration: 10
+  EquipmentItemSpeed: 200
+  EquipmentShieldDurability:
+  - {r: 0, g: 0, b: 0.21176471, a: 1}
+  - {r: 0, g: 0, b: 0.5372549, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  ItemInvaderDropChange: 0.05
+  ItemMysteryShipDropChange: 0.8
+  ItemShieldChance: 0.4
+  ItemRapidFireChance: 0.6
+  ItemExplosiveWeaponChance: 0.2
+  ItemUltimateChance: 0.1
   CannonLifes: 3
   CannonBulletSpeed: 500
   CannonMoveSpeed: 300
@@ -36,6 +48,10 @@ MonoBehaviour:
   LineOfInvaders2: 2
   LineOfInvaders3: 1
   InvadersPerLine: 12
+  BaseShelterDurability:
+  - {r: 0, g: 0.39215687, b: 0.003921569, a: 1}
+  - {r: 0, g: 0.627451, b: 0.003921569, a: 1}
+  - {r: 0, g: 0.96862745, b: 0.003921569, a: 1}
   BaseShelterCount: 4
   BaseShelterSpacing: 170
   BaseShelterCenterY: -150

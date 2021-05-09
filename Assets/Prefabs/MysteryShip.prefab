@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 7786599417771437633}
   m_Layer: 7
   m_Name: MysteryShip
-  m_TagString: MysteryShip
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -623,8 +623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2642e45c597308b4eaaa09669a1b03d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathFx: {fileID: 2879073816210043825, guid: 47900df28a608d5488eeaf22bb951a46, type: 3}
   rigidbod: {fileID: 7786599417771437633}
   sfx: {fileID: 3821429860288381092}
+  item: {fileID: 5000678761619877550, guid: c301505cb97a7f0479578ba1d3e498e5, type: 3}
 --- !u!54 &7786599417771437633
 Rigidbody:
   m_ObjectHideFlags: 0

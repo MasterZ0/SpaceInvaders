@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: -190496071799114891}
   m_Layer: 7
   m_Name: Invader 3
-  m_TagString: Invader
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,6 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: -190496071799114891}
   invaderType: 2
+  deathFx: {fileID: 2879073816210043825, guid: 2da0ed52fd6e5894888f94e234d88465, type: 3}
 --- !u!95 &-190496071799114891
 Animator:
   serializedVersion: 3

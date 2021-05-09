@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Object Pool B
+/*
 public class EffectManager : MonoBehaviour {
     [Header("GameObject")]
     [SerializeField] private ExplosionFX cannonExplosion;
@@ -81,3 +83,4 @@ public class EffectManager : MonoBehaviour {
         }
     }
 }
+*/

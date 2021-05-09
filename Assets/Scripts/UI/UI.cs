@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour {
@@ -17,6 +18,7 @@ public class UI : MonoBehaviour {
     }
 
     public void ShowMainMenu() {
+        EventSystem.current.SetSelectedGameObject(null);
         titleScreen.SetActive(false);
         mainMenu.SetActive(true);
         playBtn.Select();

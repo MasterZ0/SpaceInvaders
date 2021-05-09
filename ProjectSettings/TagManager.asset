@@ -5,12 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SideWall
-  - Bullet
-  - Invader
-  - BaseShelter
-  - MysteryShip
-  - Enemy
   - CannonArea
+  - PlayerHitbox
   layers:
   - Default
   - TransparentFX
@@ -23,8 +19,8 @@ TagManager:
   - PlayerHitbox
   - EnemyHitbox
   - BaseShelter
-  - ArenaTrigger
-  - WallLimit
+  - OnlyCollisionEnemy
+  - OnlyCollisionPlayer
   - 
   - 
   - 
