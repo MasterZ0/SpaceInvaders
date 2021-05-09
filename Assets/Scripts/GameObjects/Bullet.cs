@@ -20,10 +20,10 @@ public class Bullet : PooledObject {
 
     private void Awake() {
         speed = bulletType switch {
-            BulletType.Cannon => GameManager.GameSettings.CannonBulletSpeed,
-            BulletType.RapidFire => GameManager.GameSettings.CannonBulletSpeed,
-            BulletType.ExplosiveBullet => GameManager.GameSettings.CannonBulletSpeed,
-            BulletType.Invader => GameManager.GameSettings.InvaderBulletSpeed,
+            BulletType.Cannon => GameManager.GameSettings.BulletCannonSpeed,
+            BulletType.RapidFire => GameManager.GameSettings.BulletRapidFireSpeed,
+            BulletType.ExplosiveBullet => GameManager.GameSettings.BulletExplosiveSpeed,
+            BulletType.Invader => GameManager.GameSettings.BulletInvaderSpeed,
             _ => throw new NotImplementedException()
         };
     }

@@ -20,22 +20,12 @@ public class Rocket : GameObserver {
     [SerializeField] private UnityEvent<bool> launchSfx;
     [SerializeField] private UnityEvent<bool> flyingSfx;
 
-    public event Action OnReady;  
     private GameSettings gameSettings;
     private Transform target;
     private Vector3 startPosition;
 
-    private bool rocketLoading = true;
-    private float rocketTransition;
-    private float RocketTransition {
-        get {
-            return rocketTransition;
-        }
-        set {
-            HUD.UpdateRocket(value);
-            rocketTransition = value;
-        }
-    }
+    private bool rocketReady;
+    private int rocketCharges;
 
     private const float delayUpdate = .2f;     // Delay if can't find a target
     private float readjusmentTimer;
@@ -61,6 +51,10 @@ public class Rocket : GameObserver {
     #endregion
 
     public void Shoot(Vector3 position) {
+        if (!rocketReady)
+            return;
+
+        rocketReady = false;
         flying = true;
         readjusmentTimer = gameSettings.RocketTimeToReadjustment;
 
@@ -68,7 +62,7 @@ public class Rocket : GameObserver {
         transform.rotation = Quaternion.identity;
 
         rigidbod.velocity = transform.up * gameSettings.RocketInicialSpeed;
-        RocketTransition = 0;
+        rocketCharges = 0;
         launchSfx.Invoke(true);
     }
 
@@ -88,12 +82,14 @@ public class Rocket : GameObserver {
                 SearchForTarget();
             }
         }
-        else if (rocketLoading) {           // Loading
-            RocketTransition += Time.fixedDeltaTime / gameSettings.RocketChargeDuration;
+    }
 
-            if (RocketTransition >= 1) {
-                rocketLoading = false;
-                OnReady.Invoke();
+    public void AddCharge() {
+        if (!rocketReady) {
+            rocketCharges++;
+            HUD.UpdateRocket((float)rocketCharges / gameSettings.RocketShootsToCharge);
+            if (rocketCharges == gameSettings.RocketShootsToCharge) {
+                rocketReady = true;
             }
         }
     }
@@ -147,8 +143,9 @@ public class Rocket : GameObserver {
     }
     private void ResetRocket() {
         follow = false;
-        RocketTransition = 0;
-        rocketLoading = true;
+        rocketCharges = 0;
+        HUD.UpdateRocket(0);
+        rocketReady = false;
         flying = false;
 
         transform.position = startPosition;

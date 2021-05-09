@@ -15,11 +15,11 @@ public class RapidFire : Ability {
         canShoot = true;
     }
 
-    public override void Process() {
+    public override bool Process() {
         if (!canShoot)
-            return;
-        canShoot = false;
+            return false;
 
+        canShoot = false;
         if (leftCannon) {
             animator.Play(Constants.Animator.LeftShoot);
             bullet.SpawnObject(leftPoint.position, leftPoint.rotation);
@@ -28,6 +28,7 @@ public class RapidFire : Ability {
             animator.Play(Constants.Animator.RightShoot);
             bullet.SpawnObject(rightPoint.position, rightPoint.rotation);
         }
+        return true;
     }
 
     public void OnAnimationTrigger() {

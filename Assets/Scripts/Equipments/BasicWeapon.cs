@@ -17,10 +17,12 @@ public class BasicWeapon : Ability {
         canShoot = true;
     }
 
-    public override void Process() {
-        if (canShoot) {
-            canShoot = false;
-            cannonBullet.Shoot(firePoint.position);
-        }
+    public override bool Process() {
+        if (!canShoot) 
+            return false;
+
+        canShoot = false;
+        cannonBullet.Shoot(firePoint.position);
+        return true;
     }
 }

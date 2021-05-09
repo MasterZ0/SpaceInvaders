@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90918886c81b9aa46a635d985af45d53, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  BulletCannonSpeed: 500
+  BulletInvaderSpeed: 400
+  BulletExplosiveSpeed: 300
+  BulletRapidFireSpeed: 800
   EquipmentDuration: 10
   EquipmentItemSpeed: 200
   EquipmentShieldDurability:
@@ -25,22 +29,27 @@ MonoBehaviour:
   ItemExplosiveWeaponChance: 0.2
   ItemUltimateChance: 0.1
   CannonLifes: 3
-  CannonBulletSpeed: 500
   CannonMoveSpeed: 300
-  RocketChargeDuration: 5
+  RocketShootsToCharge: 10
   RocketTimeToReadjustment: 0.5
   RocketInicialSpeed: 300
   RocketMoveSpeed: 500
   RocketRotationSpeed: 8
   InvaderStartStepFrequency: 1
   InvaderStepFrequencyReducer: 0.1
-  InvaderBulletSpeed: 400
   MysteryMoveSpeed: 240
-  MysteryFrequencyAppearance: 6
+  MysteryFrequencyAppearance: 10
   PointsInvader1: 10
   PointsInvader2: 20
   PointsInvader3: 30
   PointsMysteryShip: 300
+  BaseShelterCount: 4
+  BaseShelterDurability:
+  - {r: 0, g: 0.39215687, b: 0.003921569, a: 1}
+  - {r: 0, g: 0.627451, b: 0.003921569, a: 1}
+  - {r: 0, g: 0.96862745, b: 0.003921569, a: 1}
+  BaseShelterSpacing: 170
+  BaseShelterCenterY: -150
   InvadersStartCenterY: 80
   InvadersSpacing: {x: 60, y: 40}
   InvaderStep: {x: 10, y: 25}
@@ -48,10 +57,3 @@ MonoBehaviour:
   LineOfInvaders2: 2
   LineOfInvaders3: 1
   InvadersPerLine: 12
-  BaseShelterDurability:
-  - {r: 0, g: 0.39215687, b: 0.003921569, a: 1}
-  - {r: 0, g: 0.627451, b: 0.003921569, a: 1}
-  - {r: 0, g: 0.96862745, b: 0.003921569, a: 1}
-  BaseShelterCount: 4
-  BaseShelterSpacing: 170
-  BaseShelterCenterY: -150

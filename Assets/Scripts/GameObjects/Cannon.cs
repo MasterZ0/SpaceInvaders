@@ -10,15 +10,12 @@ public class Cannon : GameObserver, ICollector, IDamageble {
     private GameSettings gameSettings;
     private Vector3 startPosition;
 
-    private bool rocketReady;
     private Equipment equipment;
 
     protected override void Awake() {
         base.Awake();
         startPosition = transform.position;
         gameSettings = GameManager.GameSettings;
-
-        rocket.OnReady += () => rocketReady = true;
     }
 
     private void Start() {
@@ -58,13 +55,11 @@ public class Cannon : GameObserver, ICollector, IDamageble {
 
     }
     public void OnShoot() {
-        equipment.Shoot();
+        bool successful = equipment.Shoot();
+        if(successful)
+            rocket.AddCharge();
     }
     public void OnRocket() {
-        if (!rocketReady)
-            return;
-
-        rocketReady = false;
         rocket.Shoot(rocketPoint.position);
     }
 

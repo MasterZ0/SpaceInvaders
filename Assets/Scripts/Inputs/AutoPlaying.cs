@@ -5,20 +5,24 @@ using UnityEngine;
 public class AutoPlaying : MonoBehaviour {
     [SerializeField] private Cannon cannon;
 
-    private const float timeToUpdate = .5f;
-    private float time;
+    private const float timeToAct = .5f;
 
-    private void Update() {
-        time -= Time.deltaTime;
-        if(time <= 0) {
-            time = timeToUpdate;
-
-            Actions();
-        }
+    private void OnEnable() {
+        StartCoroutine(Actions());
     }
-    private void Actions() {
-        int r = Random.Range(-1, 2);
-        cannon.OnMove(r);
-        cannon.OnShoot();
+
+    private void OnDisable() {
+        StopAllCoroutines();
+    }
+    private IEnumerator Actions() {
+        while (true) {
+            int r = Random.Range(-1, 2);
+            cannon.OnMove(r);
+            cannon.OnShoot();
+            yield return new WaitForSeconds(timeToAct / 2);
+
+            cannon.OnRocket();
+            yield return new WaitForSeconds(timeToAct / 2);
+        }
     }
 }

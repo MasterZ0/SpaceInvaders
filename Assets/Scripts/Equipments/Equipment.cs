@@ -25,10 +25,13 @@ public class Equipment {
             infityDuration = true;
     }
 
-    public void Shoot() {
+    public bool Shoot() {
+        bool sucess = false;
         foreach (var item in weapons) {
-            item.Process();
+            if (item.Process())
+                sucess = true;
         }
+        return sucess;
     }
 
     public bool UpdateTimer() {     // Better use coroutine?

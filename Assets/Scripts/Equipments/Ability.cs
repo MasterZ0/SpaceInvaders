@@ -8,7 +8,7 @@ public abstract class Ability : PooledObject {
     private void OnEnable() {
         transform.localScale = Vector3.one;
     }
-    public virtual void Process() { }
+    public virtual bool Process() => false;
     public virtual void Dispose() {
         ReturnToPool();
         // Call hud

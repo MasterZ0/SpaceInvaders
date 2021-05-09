@@ -80,7 +80,7 @@ public class HUD : GameObserver {
         };
         scoreText.text = currentScore.ToString();
         if (currentScore > hiScore) {
-            hiScoreText.text = hiScore.ToString();
+            hiScoreText.text = currentScore.ToString();
         }
     }
 

@@ -88,14 +88,9 @@ public class InvadersController : GameObserver {
         waitingWallColision = true;
         direction *= -1;
         transform.position = new Vector3(transform.position.x + gameSettings.InvaderStep.x * direction, transform.position.y - gameSettings.InvaderStep.y);
-        StartCoroutine(WallCollisionDelay());
+        Invoke(nameof(WallCollisionDelay), .2f);
     }
-
-    private IEnumerator WallCollisionDelay() {
-        yield return new WaitForSeconds(.2f);
-        waitingWallColision = false;
-    }
-
+    private void WallCollisionDelay() => waitingWallColision = false;
     private void OnInvaderDie(Invader deadInvader) {
 
         foreach (List<Invader> colOfInvaders in invadersAlive) {
