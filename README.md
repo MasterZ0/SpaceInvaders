@@ -9,6 +9,8 @@ Link: http://www.hoplon.com/
 
 The objective was to reproduce the mechanics of Space Invaders, adding a missile mechanic and another of my choice. I chose to add some random items to test design patterns that I learned recently. Altogether I used Singleton, State, Observer, Factory, Builder and Strategy.
 
+The 3d models and animations I made using Unity resources, sprites in photoshop, and the icon and sounds I got from the internet, just making small changes through FMOD.
+
 ## Commands
 - Move: Left and Right Arrows
 - Shoot: Space
