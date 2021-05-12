@@ -47,3 +47,11 @@ The following packages were added:
   com.unity.visualscripting@1.5.2
 The following packages were updated:
   com.unity.render-pipelines.universal from version 10.2.0 to 11.0.0
+
+=== Wed May 12 18:32:02 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ide.rider from version 3.0.5 to 3.0.6
