@@ -2,7 +2,7 @@
 
  ![Screenshot](https://user-images.githubusercontent.com/64444068/117709340-2f878f00-b1a7-11eb-8efe-8e319210b03c.png)
  
-This game was a test proposed test for a job interview
+This game was a test proposed for a job interview
 
 ##  About the test
 
