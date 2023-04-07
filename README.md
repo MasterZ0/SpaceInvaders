@@ -16,4 +16,5 @@ The 3d models, animations and effects I made using Unity resources. The UI sprit
 - Missile: Left Ctrl
 
 ## Download Build
-Link: https://drive.google.com/drive/folders/1yVO5NxZkfiy0ThhxUGPV8vJXP7MCmrqs?usp=sharing
+- [Download](https://drive.google.com/drive/folders/1yVO5NxZkfiy0ThhxUGPV8vJXP7MCmrqs?usp=sharing)
+- [Video](https://drive.google.com/file/d/1Vg8oz-msITiS98tzVl2wZjK9RWSuTsVD/view?usp=sharing)
